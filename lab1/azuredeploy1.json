@@ -1,16 +1,23 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},
+    "parameters": {
+        "Storageaccount": {
+           "type": "string",
+           "metadata": {
+                "description": ""
+            }
+        }
+    },
     "variables": {},
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2018-07-01",
-            "name": "jsfstorage",
+            "apiVersion": "2015-06-15",
+            "name": "[parameters('storageaccount')]",
             "location": "[resourceGroup().location]",
             "tags": {
-                "displayName": "jsfstorage"
+                "displayName": "[parameters('storageaccount')]"
             },
             "properties": {
                 "accountType": "Standard_LRS"
